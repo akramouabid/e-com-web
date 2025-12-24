@@ -14,7 +14,7 @@ $success = '';
 // Gestion de la déconnexion
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     $auth->logout();
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $auth->login($username, $password);
     
     if ($result['success']) {
-        header('Location: /index.php');
+        header('Location: ../index.php');
         exit;
     } else {
         $error = $result['message'];
@@ -39,18 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <!-- Navigation simple -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo">📚 LibreBooks</a>
             </div>
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Accueil</a>
-                <a href="/pages/register.php" class="nav-link">Inscription</a>
+                <a href="../index.php" class="nav-link">Accueil</a>
+                <a href="register.php" class="nav-link">Inscription</a>
             </div>
         </div>
     </nav>
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
                 
                 <p class="auth-link">
-                    Pas encore de compte ? <a href="/pages/register.php">S'inscrire</a>
+                    Pas encore de compte ? <a href="register.php">S'inscrire</a>
                 </p>
             </div>
         </section>

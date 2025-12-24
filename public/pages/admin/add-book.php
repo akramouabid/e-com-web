@@ -11,7 +11,7 @@ $auth = new Auth($pdo);
 
 // Vérifier si admin
 if (!$auth->isAdmin()) {
-    header('Location: /index.php');
+    header('Location: ../../index.php');
     exit;
 }
 
@@ -59,8 +59,8 @@ $user = $auth->getCurrentUser();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un livre - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
 </head>
 <body>
     <!-- Navigation Admin -->
@@ -71,11 +71,11 @@ $user = $auth->getCurrentUser();
             </div>
             
             <div class="nav-menu">
-                <a href="/pages/admin/dashboard.php" class="nav-link">Tableau de bord</a>
-                <a href="/pages/admin/manage-books.php" class="nav-link">Gérer les livres</a>
-                <a href="/pages/admin/add-book.php" class="nav-link active">Ajouter un livre</a>
+                <a href="dashboard.php" class="nav-link">Tableau de bord</a>
+                <a href="manage-books.php" class="nav-link">Gérer les livres</a>
+                <a href="add-book.php" class="nav-link active">Ajouter un livre</a>
                 <span class="nav-link">Admin: <?php echo htmlspecialchars($user['username']); ?></span>
-                <a href="/pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
+                <a href="../login.php?action=logout" class="nav-link logout">Déconnexion</a>
             </div>
         </div>
     </nav>
@@ -185,7 +185,7 @@ $user = $auth->getCurrentUser();
                 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary btn-large">Ajouter le livre</button>
-                    <a href="/pages/admin/manage-books.php" class="btn btn-secondary">Annuler</a>
+                    <a href="manage-books.php" class="btn btn-secondary">Annuler</a>
                 </div>
             </form>
         </section>

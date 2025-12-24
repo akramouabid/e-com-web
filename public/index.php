@@ -2,9 +2,9 @@
 session_start();
 
 // Inclure la configuration
-require_once __DIR__ . '/../../src/config/Database.php';
-require_once __DIR__ . '/../../src/classes/Auth.php';
-require_once __DIR__ . '/../../src/classes/Book.php';
+require_once __DIR__ . '/../src/config/Database.php';
+require_once __DIR__ . '/../src/classes/Auth.php';
+require_once __DIR__ . '/../src/classes/Book.php';
 
 $db = new Database();
 $pdo = $db->connect();
@@ -29,34 +29,34 @@ $books = $book->getAll($items_per_page, $offset);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibreBooks - Boutique de Livres en Ligne</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks</a>
+                <a href="index.php" class="logo">📚 LibreBooks</a>
             </div>
             
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Accueil</a>
-                <a href="/pages/shop.php" class="nav-link">Boutique</a>
+                <a href="index.php" class="nav-link">Accueil</a>
+                <a href="pages/shop.php" class="nav-link">Boutique</a>
                 
                 <?php if ($auth->isLoggedIn()): ?>
                     <span class="nav-link">Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                     
                     <?php if ($auth->isAdmin()): ?>
-                        <a href="/pages/admin/dashboard.php" class="nav-link admin-link">Admin</a>
+                        <a href="pages/admin/dashboard.php" class="nav-link admin-link">Admin</a>
                     <?php endif; ?>
                     
-                    <a href="/pages/cart.php" class="nav-link cart-link">
+                    <a href="pages/cart.php" class="nav-link cart-link">
                         🛒 Panier <span id="cart-count" class="cart-badge">0</span>
                     </a>
-                    <a href="/pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
+                    <a href="pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
                 <?php else: ?>
-                    <a href="/pages/login.php" class="nav-link">Connexion</a>
-                    <a href="/pages/register.php" class="nav-link register">Inscription</a>
+                    <a href="pages/login.php" class="nav-link">Connexion</a>
+                    <a href="pages/register.php" class="nav-link register">Inscription</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -128,8 +128,8 @@ $books = $book->getAll($items_per_page, $offset);
                                         <small><?php echo htmlspecialchars($b['category_name']); ?></small>
                                     </p>
                                     <div class="book-price"><?php echo number_format($b['price'], 2); ?> €</div>
-                                    <a href="/pages/book-detail.php?id=<?php echo $b['id']; ?>" class="btn btn-info">
-                                        Voir détails
+                                    <a href="pages/book-detail.php?id=<?php echo $b['id']; ?>" class="btn btn-info">
+                                        Voir détails 
                                     </a>
                                 </div>
                             </div>
@@ -170,8 +170,8 @@ $books = $book->getAll($items_per_page, $offset);
         </div>
     </footer>
 
-    <script src="/assets/js/ajax.js"></script>
-    <script src="/assets/js/cart.js"></script>
+    <script src="assets/js/ajax.js"></script>
+    <script src="assets/js/cart.js"></script>
     <script>
         // Initialiser les filtres
         document.getElementById('apply-filters').addEventListener('click', applyFilters);

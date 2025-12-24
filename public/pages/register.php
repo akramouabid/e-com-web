@@ -13,7 +13,7 @@ $success = '';
 
 // Si déjà connecté, rediriger
 if ($auth->isLoggedIn()) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -44,18 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <!-- Navigation simple -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo">📚 LibreBooks</a>
             </div>
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Accueil</a>
-                <a href="/pages/login.php" class="nav-link">Connexion</a>
+                <a href="../index.php" class="nav-link">Accueil</a>
+                <a href="login.php" class="nav-link">Connexion</a>
             </div>
         </div>
     </nav>
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
                 
                 <p class="auth-link">
-                    Déjà inscrit? <a href="/pages/login.php">Se connecter</a>
+                    Déjà inscrit? <a href="login.php">Se connecter</a>
                 </p>
             </div>
         </section>

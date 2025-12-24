@@ -12,7 +12,7 @@ $auth = new Auth($pdo);
 
 // Vérifier si admin
 if (!$auth->isAdmin()) {
-    header('Location: /index.php');
+    header('Location:../../index.php');
     exit;
 }
 
@@ -30,23 +30,23 @@ $users = $userClass->getAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord Admin - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
 </head>
 <body>
     <!-- Navigation Admin -->
     <nav class="navbar admin-navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks Admin</a>
+                <a href="../../index.php" class="logo">📚 LibreBooks Admin</a>
             </div>
             
             <div class="nav-menu">
-                <a href="/pages/admin/dashboard.php" class="nav-link active">Tableau de bord</a>
-                <a href="/pages/admin/manage-books.php" class="nav-link">Gérer les livres</a>
-                <a href="/pages/admin/add-book.php" class="nav-link">Ajouter un livre</a>
+                <a href="dashboard.php" class="nav-link active">Tableau de bord</a>
+                <a href="manage-books.php" class="nav-link">Gérer les livres</a>
+                <a href="add-book.php" class="nav-link">Ajouter un livre</a>
                 <span class="nav-link">Admin: <?php echo htmlspecialchars($user['username']); ?></span>
-                <a href="/pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
+                <a href="../login.php?action=logout" class="nav-link logout">Déconnexion</a>
             </div>
         </div>
     </nav>
@@ -114,7 +114,7 @@ $users = $userClass->getAll();
         <section class="admin-section">
             <h2>Livres récents</h2>
             
-            <a href="/pages/admin/add-book.php" class="btn btn-primary">+ Ajouter un livre</a>
+            <a href="add-book.php" class="btn btn-primary">+ Ajouter un livre</a>
             
             <table class="admin-table">
                 <thead>
@@ -136,7 +136,7 @@ $users = $userClass->getAll();
                             <td><?php echo number_format($b['price'], 2); ?> €</td>
                             <td><?php echo $b['stock']; ?></td>
                             <td>
-                                <a href="/pages/admin/manage-books.php?id=<?php echo $b['id']; ?>" class="btn btn-small btn-info">Éditer</a>
+                                <a href="manage-books.php?id=<?php echo $b['id']; ?>" class="btn btn-small btn-info">Éditer</a>
                                 <button class="btn btn-small btn-danger" onclick="deleteBook(<?php echo $b['id']; ?>)">Supprimer</button>
                             </td>
                         </tr>

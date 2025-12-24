@@ -2,7 +2,6 @@
 /**
  * Classe Book - Gestion des livres (produits)
  */
-
 class Book {
     private $pdo;
     
@@ -19,9 +18,9 @@ class Book {
             FROM books b
             LEFT JOIN categories c ON b.category_id = c.id
             ORDER BY b.created_at DESC
-            LIMIT ? OFFSET ?
+            LIMIT 12 OFFSET 0
         ");
-        $stmt->execute([$limit, $offset]);
+        $stmt->execute();
         return $stmt->fetchAll();
     }
     

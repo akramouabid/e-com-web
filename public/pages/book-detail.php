@@ -12,7 +12,7 @@ $book = new Book($pdo);
 
 // Vérifier si connecté
 if (!$auth->isLoggedIn()) {
-    header('Location: /pages/login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -20,7 +20,7 @@ $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $book_detail = $book->getById($book_id);
 
 if (!$book_detail) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>
@@ -30,22 +30,22 @@ if (!$book_detail) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($book_detail['title']); ?> - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo">📚 LibreBooks</a>
             </div>
             
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Accueil</a>
-                <a href="/pages/cart.php" class="nav-link cart-link">
+                <a href="../index.php" class="nav-link">Accueil</a>
+                <a href="cart.php" class="nav-link cart-link">
                     🛒 Panier <span id="cart-count" class="cart-badge">0</span>
                 </a>
-                <a href="/pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
+                <a href="login.php?action=logout" class="nav-link logout">Déconnexion</a>
             </div>
         </div>
     </nav>
@@ -54,12 +54,12 @@ if (!$book_detail) {
     <main class="container">
         <section class="book-detail-section">
             <div class="breadcrumb">
-                <a href="/index.php">Accueil</a> > <span><?php echo htmlspecialchars($book_detail['title']); ?></span>
+                <a href="../index.php">Accueil</a> > <span><?php echo htmlspecialchars($book_detail['title']); ?></span>
             </div>
             
             <div class="book-detail">
                 <div class="book-detail-image">
-                    <img src="<?php echo $book_detail['cover_image'] ?? '/assets/images/no-cover.jpg'; ?>" 
+                    <img src="<?php echo $book_detail['cover_image'] ?? '../assets/images/no-cover.jpg'; ?>" 
                          alt="<?php echo htmlspecialchars($book_detail['title']); ?>">
                 </div>
                 
@@ -141,14 +141,14 @@ if (!$book_detail) {
         </div>
     </footer>
 
-    <script src="/assets/js/cart.js"></script>
+    <script src="../assets/js/cart.js"></script>
     <script>
         document.getElementById('add-to-cart-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const formData = new FormData(this);
             
-            fetch('/src/api/add-to-cart.php', {
+            fetch('../src/api/add-to-cart.php', {
                 method: 'POST',
                 body: formData
             })

@@ -9,11 +9,9 @@ class Database {
     private $host = 'localhost';
     private $db_name = 'ecom_bookstore';
     private $username = 'root';
-    private $password = '';
+    private $password = 'bebe4545';//ddl
     private $charset = 'utf8mb4';
-    
     private $pdo;
-    
     /**
      * Établit la connexion à la base de données
      */

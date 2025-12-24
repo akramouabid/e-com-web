@@ -11,7 +11,7 @@ $auth = new Auth($pdo);
 
 // Vérifier si connecté
 if (!$auth->isLoggedIn()) {
-    header('Location: /pages/login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -26,22 +26,22 @@ $cart_total = $cart->getTotal();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier - LibreBooks</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo">📚 LibreBooks</a>
             </div>
             
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Accueil</a>
-                <a href="/pages/cart.php" class="nav-link cart-link active">
+                <a href="../index.php" class="nav-link">Accueil</a>
+                <a href="cart.php" class="nav-link cart-link active">
                     🛒 Panier <span id="cart-count" class="cart-badge"><?php echo count($cart_items); ?></span>
                 </a>
-                <a href="/pages/login.php?action=logout" class="nav-link logout">Déconnexion</a>
+                <a href="login.php?action=logout" class="nav-link logout">Déconnexion</a>
             </div>
         </div>
     </nav>
@@ -54,7 +54,7 @@ $cart_total = $cart->getTotal();
             <?php if (empty($cart_items)): ?>
                 <div class="empty-cart">
                     <p>Votre panier est vide</p>
-                    <a href="/index.php" class="btn btn-primary">Continuer vos achats</a>
+                    <a href="../index.php" class="btn btn-primary">Continuer vos achats</a>
                 </div>
             <?php else: ?>
                 <div class="cart-container">
@@ -74,7 +74,7 @@ $cart_total = $cart->getTotal();
                                     <tr class="cart-item" data-cart-id="<?php echo $item['id']; ?>">
                                         <td>
                                             <div class="cart-item-info">
-                                                <img src="<?php echo $item['cover_image'] ?? '/assets/images/no-cover.jpg'; ?>" 
+                                                <img src="<?php echo $item['cover_image'] ?? 'assets/images/no-cover.jpg'; ?>" 
                                                      alt="<?php echo htmlspecialchars($item['title']); ?>" class="cart-item-image">
                                                 <div>
                                                     <strong><?php echo htmlspecialchars($item['title']); ?></strong>
@@ -117,7 +117,7 @@ $cart_total = $cart->getTotal();
                         </div>
                         
                         <button class="btn btn-primary btn-block btn-large">Procéder au paiement</button>
-                        <a href="/index.php" class="btn btn-secondary btn-block">Continuer vos achats</a>
+                        <a href="../index.php" class="btn btn-secondary btn-block">Continuer vos achats</a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -131,7 +131,7 @@ $cart_total = $cart->getTotal();
         </div>
     </footer>
 
-    <script src="/assets/js/cart.js"></script>
+    <script src="assets/js/cart.js"></script>
     <script>
         // Mettre à jour la quantité
         document.querySelectorAll('.quantity-input').forEach(input => {
@@ -139,7 +139,7 @@ $cart_total = $cart->getTotal();
                 const cartId = this.getAttribute('data-cart-id');
                 const quantity = this.value;
                 
-                fetch('/src/api/update-cart.php', {
+                fetch('src/api/update-cart.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -164,7 +164,7 @@ $cart_total = $cart->getTotal();
                 const cartId = this.getAttribute('data-cart-id');
                 
                 if (confirm('Êtes-vous sûr?')) {
-                    fetch('/src/api/remove-from-cart.php', {
+                    fetch('src/api/remove-from-cart.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'

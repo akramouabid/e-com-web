@@ -41,7 +41,7 @@ class Auth {
         }
         
         // Créer le compte
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $password_hash = $password;
         
         try {
             $stmt = $this->pdo->prepare("
@@ -71,7 +71,7 @@ class Auth {
             return ['success' => false, 'message' => 'Utilisateur non trouvé'];
         }
         
-        if (!password_verify($password, $user['password_hash'])) {
+        if (!($password== $user['password_hash'])) {
             return ['success' => false, 'message' => 'Mot de passe incorrect'];
         }
         
