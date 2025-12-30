@@ -1,32 +1,77 @@
 <?php
-header('Content-Type: application/json');
 session_start();
 
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../classes/Auth.php';
-require_once __DIR__ . '/../../classes/Cart.php';
+// Définir le type de contenu JSON
+header('Content-Type: application/json');
 
-$db = new Database();
-$pdo = $db->connect();
-$auth = new Auth($pdo);
+// Activer l'affichage des erreurs pour le débogage (à retirer en production)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 
-// Vérifier si connecté
-if (!$auth->isLoggedIn()) {
-    echo json_encode(['success' => false, 'message' => 'Non connecté']);
-    exit;
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../classes/Auth.php';
+require_once __DIR__ . '/../classes/Cart.php';
+
+try {
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Vous devez être connecté pour ajouter au panier'
+        ]);
+        exit;
+    }
+
+    // Vérifier les données POST
+    if (!isset($_POST['book_id']) || !isset($_POST['quantity'])) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Données manquantes (book_id ou quantity)'
+        ]);
+        exit;
+    }
+
+    $book_id = intval($_POST['book_id']);
+    $quantity = intval($_POST['quantity']);
+
+    // Validation
+    if ($book_id <= 0) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'ID du livre invalide'
+        ]);
+        exit;
+    }
+
+    if ($quantity <= 0) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Quantité invalide'
+        ]);
+        exit;
+    }
+
+    // Connexion à la base de données
+    $db = new Database();
+    $pdo = $db->connect();
+    
+    $user_id = $_SESSION['user_id'];
+    $cart = new Cart($pdo, $user_id);
+    
+    // Ajouter au panier - LA MÉTHODE RETOURNE UN TABLEAU !
+    $result = $cart->addItem($book_id, $quantity);
+    
+    // Retourner directement le résultat
+    echo json_encode($result);
+    
+} catch (Exception $e) {
+    // Logger l'erreur
+    error_log("Erreur add-to-cart: " . $e->getMessage());
+    
+    echo json_encode([
+        'success' => false,
+        'message' => 'Erreur serveur: ' . $e->getMessage()
+    ]);
 }
-
-$user_id = $_SESSION['user_id'];
-$book_id = intval($_POST['book_id'] ?? 0);
-$quantity = intval($_POST['quantity'] ?? 1);
-
-if ($book_id <= 0 || $quantity <= 0) {
-    echo json_encode(['success' => false, 'message' => 'Données invalides']);
-    exit;
-}
-
-$cart = new Cart($pdo, $user_id);
-$result = $cart->addItem($book_id, $quantity);
-
-echo json_encode($result);
 ?>

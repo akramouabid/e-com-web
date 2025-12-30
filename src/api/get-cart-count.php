@@ -1,24 +1,43 @@
 <?php
-header('Content-Type: application/json');
 session_start();
 
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../classes/Auth.php';
-require_once __DIR__ . '/../../classes/Cart.php';
+header('Content-Type: application/json');
 
-$db = new Database();
-$pdo = $db->connect();
-$auth = new Auth($pdo);
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../classes/Cart.php';
 
-// Si pas connecté, retourner 0
-if (!$auth->isLoggedIn()) {
-    echo json_encode(['success' => true, 'count' => 0]);
-    exit;
+try {
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode([
+            'success' => true,
+            'count' => 0
+        ]);
+        exit;
+    }
+
+    // Connexion à la base de données
+    $db = new Database();
+    $pdo = $db->connect();
+    
+    $user_id = $_SESSION['user_id'];
+    $cart = new Cart($pdo, $user_id);
+    
+    // Obtenir le nombre d'articles
+    $count = $cart->getItemCount();
+    
+    echo json_encode([
+        'success' => true,
+        'count' => $count
+    ]);
+    
+} catch (Exception $e) {
+    error_log("Erreur get-cart-count: " . $e->getMessage());
+    
+    echo json_encode([
+        'success' => false,
+        'count' => 0,
+        'message' => 'Erreur serveur'
+    ]);
 }
-
-$user_id = $_SESSION['user_id'];
-$cart = new Cart($pdo, $user_id);
-$count = $cart->getItemCount();
-
-echo json_encode(['success' => true, 'count' => $count]);
 ?>

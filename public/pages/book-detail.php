@@ -129,7 +129,7 @@ if (!$book_detail) {
             <!-- Description -->
             <div class="book-description">
                 <h2>Description</h2>
-                <p><?php echo htmlspecialchars($book_detail['description']); ?></p>
+                <p><?php echo nl2br(htmlspecialchars($book_detail['description'])); ?></p>
             </div>
         </section>
     </main>
@@ -147,20 +147,42 @@ if (!$book_detail) {
             e.preventDefault();
             
             const formData = new FormData(this);
+            const messageDiv = document.getElementById('form-message');
+            const submitBtn = this.querySelector('button[type="submit"]');
             
-            fetch('../src/api/add-to-cart.php', {
+            // Désactiver le bouton pendant la requête
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Ajout en cours...';
+            
+            // CORRECTION DU CHEMIN: de pages/ vers src/api/
+            fetch('../../src/api/add-to-cart.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP: ' + response.status);
+                }
+                return response.json();
+            })
             .then(data => {
-                const messageDiv = document.getElementById('form-message');
+                console.log('Response data:', data);
+                
                 if (data.success) {
                     messageDiv.className = 'form-message success';
                     messageDiv.textContent = data.message;
-                    updateCartCount();
-                    // Attendre 2s avant de réinitialiser
-                    setTimeout(() => messageDiv.textContent = '', 2000);
+                    
+                    // Mettre à jour le compteur du panier
+                    if (typeof updateCartCount === 'function') {
+                        updateCartCount();
+                    }
+                    
+                    // Effacer le message après 3 secondes
+                    setTimeout(() => {
+                        messageDiv.textContent = '';
+                        messageDiv.className = 'form-message';
+                    }, 3000);
                 } else {
                     messageDiv.className = 'form-message error';
                     messageDiv.textContent = data.message;
@@ -168,7 +190,13 @@ if (!$book_detail) {
             })
             .catch(error => {
                 console.error('Erreur:', error);
-                document.getElementById('form-message').textContent = 'Erreur lors de l\'ajout';
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = 'Erreur lors de l\'ajout: ' + error.message;
+            })
+            .finally(() => {
+                // Réactiver le bouton
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Ajouter au panier';
             });
         });
     </script>

@@ -74,7 +74,7 @@ $cart_total = $cart->getTotal();
                                     <tr class="cart-item" data-cart-id="<?php echo $item['id']; ?>">
                                         <td>
                                             <div class="cart-item-info">
-                                                <img src="<?php echo $item['cover_image'] ?? 'assets/images/no-cover.jpg'; ?>" 
+                                                <img src="<?php echo $item['cover_image'] ?? '../assets/images/no-cover.jpg'; ?>" 
                                                      alt="<?php echo htmlspecialchars($item['title']); ?>" class="cart-item-image">
                                                 <div>
                                                     <strong><?php echo htmlspecialchars($item['title']); ?></strong>
@@ -131,7 +131,7 @@ $cart_total = $cart->getTotal();
         </div>
     </footer>
 
-    <script src="assets/js/cart.js"></script>
+    <script src="../assets/js/cart.js"></script>
     <script>
         // Mettre à jour la quantité
         document.querySelectorAll('.quantity-input').forEach(input => {
@@ -139,7 +139,8 @@ $cart_total = $cart->getTotal();
                 const cartId = this.getAttribute('data-cart-id');
                 const quantity = this.value;
                 
-                fetch('src/api/update-cart.php', {
+                // CORRECTION DU CHEMIN
+                fetch('../../src/api/update-cart.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -154,6 +155,10 @@ $cart_total = $cart->getTotal();
                         alert(data.message);
                         location.reload();
                     }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors de la mise à jour');
                 });
             });
         });
@@ -164,7 +169,8 @@ $cart_total = $cart->getTotal();
                 const cartId = this.getAttribute('data-cart-id');
                 
                 if (confirm('Êtes-vous sûr?')) {
-                    fetch('src/api/remove-from-cart.php', {
+                    // CORRECTION DU CHEMIN
+                    fetch('../../src/api/remove-from-cart.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -178,6 +184,10 @@ $cart_total = $cart->getTotal();
                         } else {
                             alert(data.message);
                         }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        alert('Erreur lors de la suppression');
                     });
                 }
             });
