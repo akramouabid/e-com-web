@@ -152,29 +152,9 @@ $users = $userClass->getAll();
         </div>
     </footer>
 
-    <script>
-        function toggleRole(userId, currentRole) {
-            const newRole = currentRole === 'user' ? 'admin' : 'user';
-            
-            if (confirm(`Changer le rôle en ${newRole}?`)) {
-                fetch('/src/api/update-user-role.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `user_id=${userId}&role=${newRole}`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        location.reload();
-                    } else {
-                        alert(data.message);
-                    }
-                });
-            }
-        }
-        
+    <script src="../../assets/js/admin.js"></script>
+    
+    <script>        
         function deleteBook(bookId) {
             if (confirm('Êtes-vous sûr de vouloir supprimer ce livre?')) {
                 fetch('/src/api/delete-book.php', {
