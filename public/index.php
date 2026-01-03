@@ -117,9 +117,14 @@ $books = $book->getAll($items_per_page, $offset);
                     <?php else: ?>
                         <?php foreach ($books as $b): ?>
                             <div class="book-card">
-                                <div class="book-image">
-                                    <img src="<?php echo $b['cover_image'] ?? '/assets/images/no-cover.jpg'; ?>" 
-                                         alt="<?php echo htmlspecialchars($b['title']); ?>">
+                                <div class="book-image-container">
+                                    <div class="book-image">
+                                        <img
+                                            src="<?php echo $b['cover_image'] ?? '/assets/images/no-cover.jpg'; ?>" 
+                                            alt="<?php echo htmlspecialchars($b['title']); ?>"
+                                            loading="lazy"
+                                        >
+                                    </div>
                                 </div>
                                 <div class="book-info">
                                     <h3><?php echo htmlspecialchars($b['title']); ?></h3>

@@ -128,16 +128,16 @@ INSERT INTO users (username, email, password_hash, role) VALUES
 
 -- Insérer des livres de test
 INSERT INTO books (title, author, description, isbn, publisher, category_id, price, stock, pages, publication_year, cover_image) VALUES
-('Fondation', 'Isaac Asimov', 'Une odyssée galactique où une fondation préserve la connaissance.', '978-2-07-032380-8', 'Denoël', 1, 19.99, 50, 560, 1951, NULL),
-('Dune', 'Frank Herbert', 'Un epic space opera sur la planète Arrakis et les intrigues de pouvoir.', '978-2-266-10629-5', 'Pocket', 1, 22.99, 45, 720, 1965, NULL),
-('Le Seigneur des Anneaux', 'J.R.R. Tolkien', 'Une quête épique pour détruire un anneau magique.', '978-2-253-04693-0', 'Le Livre de Poche', 4, 24.99, 60, 1500, 1954, NULL),
-('Orgueil et Préjugés', 'Jane Austen', 'Une histoire de romance et de malentendus en Angleterre victorienne.', '978-2-07-036694-0', 'Gallimard', 2, 18.50, 35, 408, 1813, NULL),
-('Cryptonomicon', 'Neal Stephenson', 'Un thriller technologique mélangeant histoire et cryptographie.', '978-2-266-12819-9', 'Pocket', 1, 26.99, 30, 960, 1999, NULL),
-('Harry Potter à l\'école des sorciers', 'J.K. Rowling', 'Les premières aventures d\'un jeune sorcier.', '978-2-07-053304-2', 'Gallimard', 6, 20.99, 70, 320, 1997, NULL),
-('Le Hobbit', 'J.R.R. Tolkien', 'L\'aventure d\'un hobbit réticent dans une quête épique.', '978-2-253-04816-3', 'Le Livre de Poche', 4, 16.99, 55, 400, 1937, NULL),
-('Neuromancien', 'William Gibson', 'Un cyber-punk classique qui a inspiré une génération.', '978-2-290-00001-1', 'Pocket', 1, 18.99, 40, 280, 1984, NULL),
-('Le Nom du Vent', 'Patrick Rothfuss', 'Les mémoires d\'un sorcier dans un monde de fantasy complexe.', '978-2-226-19984-2', 'Albin Michel', 4, 24.50, 48, 656, 2007, NULL),
-('Le Meilleur des Mondes', 'Aldous Huxley', 'Une dystopie d\'un futur supposé idéal.', '978-2-07-031768-5', 'Plon', 1, 19.99, 42, 300, 1932, NULL);
+('Fondation', 'Isaac Asimov', 'Une odyssée galactique où une fondation préserve la connaissance.', '978-2-07-032380-8', 'Denoël', 1, 19.99, 50, 560, 1951, "/public/assets/images/fondation_by_isaac_asimov.jpg"),
+('Dune', 'Frank Herbert', 'Un epic space opera sur la planète Arrakis et les intrigues de pouvoir.', '978-2-266-10629-5', 'Pocket', 1, 22.99, 45, 720, 1965, "/public/assets/images/dune_by_frank_herbert.jpg"),
+('Le Seigneur des Anneaux', 'J.R.R. Tolkien', 'Une quête épique pour détruire un anneau magique.', '978-2-253-04693-0', 'Le Livre de Poche', 4, 24.99, 60, 1500, 1954, "/public/assets/images/le_seigneur_des_anneaux_by_jrr.jpg"),
+('Orgueil et Préjugés', 'Jane Austen', 'Une histoire de romance et de malentendus en Angleterre victorienne.', '978-2-07-036694-0', 'Gallimard', 2, 18.50, 35, 408, 1813, "/public/assets/images/orgueil_et_prejuges_by_jane_austen.jpg"),
+('Cryptonomicon', 'Neal Stephenson', 'Un thriller technologique mélangeant histoire et cryptographie.', '978-2-266-12819-9', 'Pocket', 1, 26.99, 30, 960, 1999, "/public/assets/images/cryptonomicon_by_neal_stephenson.jpg"),
+('Harry Potter à l\'école des sorciers', 'J.K. Rowling', 'Les premières aventures d\'un jeune sorcier.', '978-2-07-053304-2', 'Gallimard', 6, 20.99, 70, 320, 1997, "/public/assets/images/harry_potter_a_lecole_des_sorciers_by_jk_rowling.jpg"),
+('Le Hobbit', 'J.R.R. Tolkien', 'L\'aventure d\'un hobbit réticent dans une quête épique.', '978-2-253-04816-3', 'Le Livre de Poche', 4, 16.99, 55, 400, 1937, "/public/assets/images/the_hobbit_by_jrr.jpg"),
+('Neuromancien', 'William Gibson', 'Un cyber-punk classique qui a inspiré une génération.', '978-2-290-00001-1', 'Pocket', 1, 18.99, 40, 280, 1984, "/public/assets/images/neuromancien_by_william_gibson.jpg"),
+('Le Nom du Vent', 'Patrick Rothfuss', 'Les mémoires d\'un sorcier dans un monde de fantasy complexe.', '978-2-226-19984-2', 'Albin Michel', 4, 24.50, 48, 656, 2007, "/public/assets/images/le_nom_du_vent_by_patrick_rothfuss.jpg"),
+('Le Meilleur des Mondes', 'Aldous Huxley', 'Une dystopie d\'un futur supposé idéal.', '978-2-07-031768-5', 'Plon', 1, 19.99, 42, 300, 1932, "/public/assets/images/le_meilleur_des_mondes_byy_aldous_huxley.jpg");
 
 -- Insérer un utilisateur test
 INSERT INTO users (username, email, password_hash, role) VALUES
