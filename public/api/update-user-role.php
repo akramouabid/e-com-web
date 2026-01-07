@@ -2,9 +2,9 @@
 header('Content-Type: application/json');
 session_start();
 
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../classes/Auth.php';
-require_once __DIR__ . '/../../classes/User.php';
+require_once __DIR__ . '/../../src/config/Database.php';
+require_once __DIR__ . '/../../src/classes/Auth.php';
+require_once __DIR__ . '/../../src/classes/User.php';
 
 $db = new Database();
 $pdo = $db->connect();

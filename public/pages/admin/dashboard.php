@@ -157,7 +157,7 @@ $users = $userClass->getAll();
             const newRole = currentRole === 'user' ? 'admin' : 'user';
             
             if (confirm(`Changer le rôle en ${newRole}?`)) {
-                fetch('/src/api/update-user-role.php', {
+                fetch('../../api/update-user-role.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
