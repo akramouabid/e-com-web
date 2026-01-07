@@ -23,6 +23,10 @@ $success = '';
 
 // Traitement de l'ajout
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $image_name= $_FILES['cover_image']['name'];
+    $image_tmp= $_FILES['cover_image']['tmp_name'];
+    $folder= "../../../database/img/".$image_name;
+    move_uploaded_file($image_tmp,$folder);
     $data = [
         'title' => htmlspecialchars($_POST['title'] ?? ''),
         'author' => htmlspecialchars($_POST['author'] ?? ''),
@@ -34,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'stock' => intval($_POST['stock'] ?? 0),
         'pages' => intval($_POST['pages'] ?? 0),
         'publication_year' => intval($_POST['publication_year'] ?? 0),
-        'cover_image' => $_POST['cover_image'] ?? null
+        'cover_image' => $image_name ?? null
     ];
     
     if (empty($data['title']) || empty($data['author'])) {
@@ -93,7 +97,7 @@ $user = $auth->getCurrentUser();
         <?php endif; ?>
         
         <section class="admin-section">
-            <form method="POST" action="" class="admin-form">
+            <form method="POST" action="" class="admin-form" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="title">Titre du livre *</label>
@@ -178,9 +182,9 @@ $user = $auth->getCurrentUser();
                 
                 <div class="form-group">
                     <label for="cover_image">URL de la couverture</label>
-                    <input type="url" id="cover_image" name="cover_image" class="form-control"
+                    <input type="file" id="cover_image" name="cover_image" class="form-control"
                            value="<?php echo htmlspecialchars($_POST['cover_image'] ?? ''); ?>"
-                           placeholder="https://example.com/cover.jpg">
+                           placeholder="C:/bureau/image">
                 </div>
                 
                 <div class="form-actions">

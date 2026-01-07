@@ -126,7 +126,7 @@ $user = $auth->getCurrentUser();
                             <label for="isbn">ISBN</label>
                             <input type="text" id="isbn" name="isbn" class="form-control"
                                    value="<?php echo htmlspecialchars($book_to_edit['isbn']); ?>">
-                        </div>
+                        </div> 
                         
                         <div class="form-group">
                             <label for="publisher">Éditeur</label>

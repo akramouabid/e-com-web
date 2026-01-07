@@ -39,6 +39,16 @@ class Book {
     }
     
     /**
+     * Vérifier si un ISBN existe déjà
+     */
+    public function isbnExists($isbn) {
+        if (empty($isbn)) return false;
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM books WHERE isbn = ?");
+        $stmt->execute([$isbn]);
+        return $stmt->fetchColumn() > 0;
+    }
+    
+    /**
      * Recherche et filtrage des livres avec AJAX
      */
     public function search($keyword = '', $category_id = null, $min_price = null, $max_price = null) {

@@ -128,7 +128,7 @@ $users = $userClass->getAll();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (array_slice($books, 0, 10) as $b): ?>
+                    <?php foreach ($books as $b): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($b['title']); ?></td>
                             <td><?php echo htmlspecialchars($b['author']); ?></td>

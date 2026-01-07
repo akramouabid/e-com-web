@@ -59,7 +59,13 @@ if (!$book_detail) {
             
             <div class="book-detail">
                 <div class="book-detail-image">
-                    <img src="<?php echo $book_detail['cover_image'] ?? '../assets/images/no-cover.jpg'; ?>" 
+                    <?php 
+                    // Correction du chemin de l'image
+                    $image_path = $book_detail['cover_image'] 
+                        ? '../../database/img/' . $book_detail['cover_image'] 
+                        : '../assets/images/no-cover.jpg';
+                    ?>
+                    <img src="<?php echo $image_path; ?>" 
                          alt="<?php echo htmlspecialchars($book_detail['title']); ?>">
                 </div>
                 
@@ -146,6 +152,7 @@ if (!$book_detail) {
         document.getElementById('add-to-cart-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // CORRECTION 1: Utiliser le FormData du formulaire (this)
             const formData = new FormData(this);
             const messageDiv = document.getElementById('form-message');
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -154,7 +161,13 @@ if (!$book_detail) {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Ajout en cours...';
             
-            // CORRECTION DU CHEMIN: de pages/ vers src/api/
+            // Afficher les données envoyées (debug)
+            console.log('Données envoyées:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key + ': ' + value);
+            }
+            
+            // CORRECTION 2: Le bon chemin vers l'API
             fetch('../../src/api/add-to-cart.php', {
                 method: 'POST',
                 body: formData
