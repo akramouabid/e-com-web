@@ -9,7 +9,7 @@ class Database {
     private $host = 'localhost';
     private $db_name = 'ecom_bookstore';
     private $username = 'root';
-    private $password = 'bebe4545';//ddl
+    private $password = '';//ddl
     private $charset = 'utf8mb4';
     private $pdo;
     /**
