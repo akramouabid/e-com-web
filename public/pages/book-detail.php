@@ -37,7 +37,7 @@ if (!$book_detail) {
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="../index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo"><img src="../../database/img/logo.png" id="logo-img" > LibreBooks</a>
             </div>
             
             <div class="nav-menu">
@@ -59,15 +59,9 @@ if (!$book_detail) {
             
             <div class="book-detail">
                 <div class="book-detail-image">
-                    <?php 
-                    // Correction du chemin de l'image
-                    $image_path = $book_detail['cover_image'] 
-                        ? '../../database/img/' . $book_detail['cover_image'] 
-                        : '../assets/images/no-cover.jpg';
-                    ?>
-                    <img src="<?php echo $image_path; ?>" 
-                         alt="<?php echo htmlspecialchars($book_detail['title']); ?>">
-                </div>
+                    <img src="<?php echo "../../database/img/".$book_detail['cover_image'] ?? '/assets/images/no-cover.jpg'; ?>" 
+                                                 alt="<?php echo htmlspecialchars($book_detail['title']); ?>">
+                 </div>
                 
                 <div class="book-detail-info">
                     <h1><?php echo htmlspecialchars($book_detail['title']); ?></h1>
@@ -147,7 +141,7 @@ if (!$book_detail) {
         </div>
     </footer>
 
-    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/cart2.js"></script>
     <script>
         document.getElementById('add-to-cart-form').addEventListener('submit', function(e) {
             e.preventDefault();

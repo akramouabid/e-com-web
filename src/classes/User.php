@@ -46,5 +46,10 @@ class User {
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$user_id]);
     }
+    public function count(): int {
+    $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users");
+    $stmt->execute();
+    return (int) $stmt->fetchColumn();
+    }
 }
 ?>

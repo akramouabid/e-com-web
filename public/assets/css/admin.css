@@ -19,7 +19,7 @@
 }
 
 .admin-container h1 {
-    color: #2c3e50;
+    color: #000000;
     margin-bottom: 2rem;
 }
 
@@ -41,7 +41,7 @@
     background: white;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-left: 4px solid #3498db;
 }
@@ -55,7 +55,7 @@
 .stat-number {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #000000;
 }
 
 /* Section admin */
@@ -63,7 +63,7 @@
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
 }
 
@@ -79,7 +79,7 @@
     padding: 1rem;
     text-align: left;
     font-weight: 600;
-    color: #2c3e50;
+    color: #000000;
     border-bottom: 2px solid #bdc3c7;
 }
 
@@ -92,6 +92,7 @@
 .admin-table tbody tr:hover {
     background-color: #f8f9fa;
 }
+
 
 .role-badge {
     padding: 0.35rem 0.75rem;
@@ -138,20 +139,20 @@
     .admin-stats {
         grid-template-columns: 1fr;
     }
-    
+
     .admin-table {
         font-size: 0.9rem;
     }
-    
+
     .admin-table th,
     .admin-table td {
         padding: 0.75rem 0.5rem;
     }
-    
+
     .form-actions {
         flex-direction: column;
     }
-    
+
     .form-actions .btn {
         flex: none;
     }

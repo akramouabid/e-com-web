@@ -71,7 +71,7 @@ $user = $auth->getCurrentUser();
     <nav class="navbar admin-navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="/index.php" class="logo">📚 LibreBooks Admin</a>
+                <a href="../../index.php" class="logo"><img src="../../../database/img/logo.png" id="logo-img" > LibreBooks Admin</a>
             </div>
             
             <div class="nav-menu">

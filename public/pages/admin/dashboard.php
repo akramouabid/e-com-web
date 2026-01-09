@@ -21,8 +21,10 @@ $bookClass = new Book($pdo);
 $userClass = new User($pdo);
 
 $books = $bookClass->getAll(50, 0);
+$totalBooks = $bookClass->count();
 $categories = $bookClass->getCategories();
 $users = $userClass->getAll();
+$totalUsers = $userClass->count();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,7 +40,7 @@ $users = $userClass->getAll();
     <nav class="navbar admin-navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="../../index.php" class="logo">📚 LibreBooks Admin</a>
+                <a href="../../index.php" class="logo"><img src="../../../database/img/logo.png" id="logo-img" > LibreBooks Admin</a>
             </div>
             
             <div class="nav-menu">
@@ -58,7 +60,7 @@ $users = $userClass->getAll();
         <div class="admin-stats">
             <div class="stat-card">
                 <h3>Livres</h3>
-                <p class="stat-number"><?php echo count($books); ?></p>
+                <p class="stat-number"><?php echo $totalBooks; ?></p>
             </div>
             
             <div class="stat-card">
@@ -68,7 +70,7 @@ $users = $userClass->getAll();
             
             <div class="stat-card">
                 <h3>Utilisateurs</h3>
-                <p class="stat-number"><?php echo count($users); ?></p>
+                <p class="stat-number"><?php echo $totalUsers; ?></p>
             </div>
         </div>
         

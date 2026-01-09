@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="../index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo"><img src="../../database/img/logo.png" id="logo-img" > LibreBooks</a>
             </div>
             <div class="nav-menu">
                 <a href="../index.php" class="nav-link">Accueil</a>

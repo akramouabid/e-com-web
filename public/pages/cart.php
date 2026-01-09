@@ -33,7 +33,7 @@ $cart_total = $cart->getTotal();
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="../index.php" class="logo">📚 LibreBooks</a>
+                <a href="../index.php" class="logo"><img src="../../database/img/logo.png" id="logo-img" >LibreBooks</a>
             </div>
             
             <div class="nav-menu">
@@ -43,7 +43,7 @@ $cart_total = $cart->getTotal();
                 </a>
                 <a href="login.php?action=logout" class="nav-link logout">Déconnexion</a>
             </div>
-        </div>
+        </div><img src="" alt="">
     </nav>
 
     <!-- Panier -->
@@ -74,7 +74,7 @@ $cart_total = $cart->getTotal();
                                     <tr class="cart-item" data-cart-id="<?php echo $item['id']; ?>">
                                         <td>
                                             <div class="cart-item-info">
-                                                <img src="<?php echo $item['cover_image'] ?? '../assets/images/no-cover.jpg'; ?>" 
+                                                <img src="<?php echo "../../database/img/".$item['cover_image'] ?? '../assets/images/no-cover.jpg'; ?>" 
                                                      alt="<?php echo htmlspecialchars($item['title']); ?>" class="cart-item-image">
                                                 <div>
                                                     <strong><?php echo htmlspecialchars($item['title']); ?></strong>
@@ -103,14 +103,6 @@ $cart_total = $cart->getTotal();
                     
                     <div class="cart-summary">
                         <h3>Résumé</h3>
-                        <div class="summary-line">
-                            <span>Sous-total:</span>
-                            <span><?php echo number_format($cart_total, 2); ?> €</span>
-                        </div>
-                        <div class="summary-line">
-                            <span>Frais de port:</span>
-                            <span>Gratuit</span>
-                        </div>
                         <div class="summary-line total">
                             <span><strong>Total:</strong></span>
                             <span><strong><?php echo number_format($cart_total, 2); ?> €</strong></span>

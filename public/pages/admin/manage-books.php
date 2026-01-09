@@ -76,7 +76,7 @@ $user = $auth->getCurrentUser();
     <nav class="navbar admin-navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="../../index.php" class="logo">📚 LibreBooks Admin</a>
+                <a href="../../index.php" class="logo"><img src="../../../database/img/logo.png" id="logo-img" > LibreBooks Admin</a>
             </div>
             
             <div class="nav-menu">
@@ -183,7 +183,7 @@ $user = $auth->getCurrentUser();
                     
                     <div class="form-group">
                         <label for="cover_image">URL de la couverture</label>
-                        <input type="url" id="cover_image" name="cover_image" class="form-control"
+                        <input type="file" id="cover_image" name="cover_image" class="form-control"
                                value="<?php echo htmlspecialchars($book_to_edit['cover_image']); ?>">
                     </div>
                     

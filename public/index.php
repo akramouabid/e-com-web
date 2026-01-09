@@ -36,14 +36,15 @@ $books = $book->getAll($items_per_page, $offset);
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.php" class="logo">📚 LibreBooks</a>
+                <a href="index.php" class="logo"><img src="../database/img/logo.png" id="logo-img" >
+                 LibreBooks</a>
             </div>
             
             <div class="nav-menu">
                 <a href="index.php" class="nav-link">Accueil</a>
                 
                 <?php if ($auth->isLoggedIn()): ?>
-                    <span class="nav-link">Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <span class="nav-text">Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                     
                     <?php if ($auth->isAdmin()): ?>
                         <a href="pages/admin/dashboard.php" class="nav-link admin-link">Admin</a>
@@ -64,8 +65,8 @@ $books = $book->getAll($items_per_page, $offset);
     <!-- Section Héros -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Bienvenue dans notre librairie en ligne</h1>
-            <p>Découvrez des milliers de livres de tous genres</p>
+            <h1>Bienvenue dans notre bibliothèque en ligne</h1>
+            <p>Découvrez une vaste collection de livres de tous genres</p>
         </div>
     </section>
 
