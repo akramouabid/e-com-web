@@ -28,3 +28,30 @@ function toggleRole(userId, currentRole) {
         });
     }
 }
+
+function deleteBook(bookId) {
+    console.log('Book id to be deleted is: ', bookId);
+
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce livre?')) {
+        fetch('/src/api/delete-book.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `book_id=${encodeURIComponent(bookId)}`
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            console.log(`data is: ${data}`);
+            if (data.success) {
+                location.reload();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error(error));
+    }
+}

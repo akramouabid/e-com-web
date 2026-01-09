@@ -183,7 +183,7 @@ $user = $auth->getCurrentUser();
                     
                     <div class="form-group">
                         <label for="cover_image">URL de la couverture</label>
-                        <input type="url" id="cover_image" name="cover_image" class="form-control"
+                        <input type="text" id="cover_image" name="cover_image" class="form-control"
                                value="<?php echo htmlspecialchars($book_to_edit['cover_image']); ?>">
                     </div>
                     

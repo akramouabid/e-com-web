@@ -153,27 +153,5 @@ $users = $userClass->getAll();
     </footer>
 
     <script src="../../assets/js/admin.js"></script>
-    
-    <script>        
-        function deleteBook(bookId) {
-            if (confirm('Êtes-vous sûr de vouloir supprimer ce livre?')) {
-                fetch('/src/api/delete-book.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `book_id=${bookId}`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        location.reload();
-                    } else {
-                        alert(data.message);
-                    }
-                });
-            }
-        }
-    </script>
 </body>
 </html>
