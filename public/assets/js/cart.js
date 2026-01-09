@@ -4,7 +4,7 @@
 
 // Mettre à jour le compteur du panier
 function updateCartCount() {
-    fetch('./api/get-cart-count.php')
+    fetch('../api/get-cart-count.php')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -20,6 +20,6 @@ function updateCartCount() {
 }
 
 // Charger le compteur au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCartCount();
 });

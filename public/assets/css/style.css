@@ -12,7 +12,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #8d5134b0;
 }
 
 .container {
@@ -26,10 +26,12 @@ body {
    ============================================ */
 
 .navbar {
-    background-color: #2c3e50;
+    background-color: #50382c;
     color: white;
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #36261e;
+
 }
 
 .navbar .container {
@@ -101,10 +103,17 @@ body {
    ============================================ */
 
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #36261e 0%, #8d5134b0 100%);
     color: white;
     padding: 4rem 2rem;
     text-align: center;
+    border: 1px solid #36261e;
+    border-radius: 0px 0px 40px 40px;
+}
+
+.logo .icon {
+    width: 70px;
+    height: 70px;
 }
 
 .hero-content h1 {
@@ -161,12 +170,12 @@ body {
 }
 
 .btn-info {
-    background-color: #16a085;
+    background-color: #ec4b00;
     color: white;
 }
 
 .btn-info:hover {
-    background-color: #138870;
+    background-color: #ec4b006e;
 }
 
 .btn-warning {
@@ -733,7 +742,7 @@ textarea.form-control:focus {
     border-radius: 4px;
 }
 
-.cart-summary {
+#2c3e50 .cart-summary {
     background: white;
     padding: 1.5rem;
     border-radius: 4px;
@@ -769,7 +778,7 @@ textarea.form-control:focus {
    ============================================ */
 
 .footer {
-    background-color: #2c3e50;
+    background-color: #50382c;
     color: white;
     padding: 2rem 0;
     text-align: center;
