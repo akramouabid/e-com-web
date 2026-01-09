@@ -41,7 +41,6 @@ $books = $book->getAll($items_per_page, $offset);
             
             <div class="nav-menu">
                 <a href="index.php" class="nav-link">Accueil</a>
-                <a href="pages/shop.php" class="nav-link">Boutique</a>
                 
                 <?php if ($auth->isLoggedIn()): ?>
                     <span class="nav-link">Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?></span>

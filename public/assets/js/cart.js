@@ -4,7 +4,7 @@
 
 // Mettre à jour le compteur du panier
 function updateCartCount() {
-    fetch('../api/get-cart-count.php')
+    fetch('api/get-cart-count.php')
         .then(response => response.json())
         .then(data => {
             if (data.success) {

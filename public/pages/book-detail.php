@@ -168,7 +168,7 @@ if (!$book_detail) {
             }
             
             // CORRECTION 2: Le bon chemin vers l'API
-            fetch('../../src/api/add-to-cart.php', {
+            fetch('../api/add-to-cart.php', {
                 method: 'POST',
                 body: formData
             })
@@ -187,9 +187,16 @@ if (!$book_detail) {
                     messageDiv.textContent = data.message;
                     
                     // Mettre à jour le compteur du panier
-                    if (typeof updateCartCount === 'function') {
-                        updateCartCount();
-                    }
+                    fetch('../api/get-cart-count.php')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                const badge = document.getElementById('cart-count');
+                                if (badge) {
+                                    badge.textContent = data.count;
+                                }
+                            }
+                        })
                     
                     // Effacer le message après 3 secondes
                     setTimeout(() => {

@@ -140,7 +140,7 @@ $cart_total = $cart->getTotal();
                 const quantity = this.value;
                 
                 // CORRECTION DU CHEMIN
-                fetch('../api/api/update-cart.php', {
+                fetch('../api/update-cart.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -170,7 +170,7 @@ $cart_total = $cart->getTotal();
                 
                 if (confirm('Êtes-vous sûr?')) {
                     // CORRECTION DU CHEMIN
-                    fetch('../api/api/remove-from-cart.php', {
+                    fetch('../api/remove-from-cart.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
